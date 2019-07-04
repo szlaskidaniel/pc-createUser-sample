@@ -1,0 +1,92 @@
+<html ng-app="recordingApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel="shortcut icon" href="/static/images/speaker.png">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+
+    <title>Create User</title>
+
+</head>
+
+<body ng-app ng-controller="purecloudController as pc">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script src="https://sdk-cdn.mypurecloud.com/javascript/51.0.0/purecloud-platform-client-v2.min.js"></script>
+
+    <script src="purecloud.js"></script>
+
+
+    <div align="right"><button id="btnDeleteToken" type="button" class="badge badge-pill badge-secondary">force
+            relogin</button>&nbsp;&nbsp;
+    </div>
+
+    <div class="alert alert-light fade show" role="alert">
+        <center>(GPCCUT) Genesys PureCloud Create User Tool <small>(<label id="orgDetails" type="text"
+                    aria-describedby="basic-addon3">loading...</label>)</small>
+        </center>
+    </div>
+
+
+    <script>
+        // Remove All user's Tokens
+        $("#btnDeleteToken").click(() => {
+            deleteTokenforUserId();
+        });
+    </script>
+
+
+    <div class="container">
+
+        <center>
+            <img src="https://img.franchising.pl/pl/ddd/2f1/santander_logo.jpg" height="100px"></img>
+        </center>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">username &nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+            <input id="txtUser" type="text" class="form-control"></input>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">mail address</span>
+            </div>
+            <input id="txtMail" type="text" class="form-control" aria-describedby="emailHelp"></input>
+        </div>
+
+
+        <center>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="pc.createUser();">Create
+                user</button>
+
+
+            <br><br>
+
+
+
+            <div>
+                <span class="badge badge-success" id='resultSuccess'>User created</span>
+                <span class="badge badge-danger" id='resultFailed'>Failed to create user</span>
+            </div>
+
+            <br>
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border" role="status" id="spinnerMain">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </center>
+
+
+</body>
+
+</html>
